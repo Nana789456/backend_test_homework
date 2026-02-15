@@ -45,18 +45,33 @@ def is_failing(marks):
 
     return get_average_value(marks) < 3
 
+# def get_failing_users(students_data):
+#     failing_users = {}
+#     failing_users_list = []
+#     print("Пользователи-«двоечники» (средний балл < 3):")
+#     for user, subjects in students_data.items(): # user - 'Иванов', subjects - {'Математика': [2, 3, 2], 'Физика': [5, 5, 5]}
+#         for subject, marks in subjects.items(): # subject - 'математика', marks - [2, 3, 2]
+#             if is_failing(marks):
+#                 failing_users[user] = marks
+#                 avg = get_average_value(marks)
+#                 failing_users_list.append(user)
+#                 break
+#                 # print(f"  {user}: {marks}, средний балл: {avg:.2f}")
+#     return failing_users_list
+
+
 def get_failing_users(students_data):
     failing_users = {}
-    failing_users_list = []
+    failing_users_list = set()
     print("Пользователи-«двоечники» (средний балл < 3):")
     for user, subjects in students_data.items(): # user - 'Иванов', subjects - {'Математика': [2, 3, 2], 'Физика': [5, 5, 5]}
         for subject, marks in subjects.items(): # subject - 'математика', marks - [2, 3, 2]
             if is_failing(marks):
                 failing_users[user] = marks
                 avg = get_average_value(marks)
-                failing_users_list.append(user)
+                failing_users_list.add(user)
+              
                 # print(f"  {user}: {marks}, средний балл: {avg:.2f}")
     return failing_users_list
-
 
 print(get_failing_users(students_data))
