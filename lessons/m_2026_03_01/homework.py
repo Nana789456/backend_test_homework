@@ -30,6 +30,40 @@
 
 from fastapi import FastAPI
 
+
 app = FastAPI()
 
 # Пишите код здесь
+@app.get("/user/{name}")
+async def user(name: str, age: int = None):
+    if age == None:
+        return {"name": name, "message": "Возраст не указан"}
+    elif age < 18:    
+        return {"name": name, "message": "Доступ запрещен"}
+    else:
+        return {"name": name, "message": "Доступ разрешен"}
+
+
+product_boxes = [
+    ("яблоки", "фрукты", True),
+    ("помидоры", "овощи", True),
+    ("огурцы", "овощи", False),
+]
+
+@app.get("/products/")
+async def products_handler(category: str = None, in_stock: bool = False):
+
+    filtered_products = []
+
+    if category:
+        for product_box in product_boxes:
+            if category in product_box:
+                product_name = product_box[0]
+                filtered_products.append(product_name)
+    
+    if in_stock:
+        for product_box in product_boxes:
+            if True in product_box:
+                product_name = product_box[0]
+                filtered_products.append(product_name)
+    return {"products": filtered_products}
