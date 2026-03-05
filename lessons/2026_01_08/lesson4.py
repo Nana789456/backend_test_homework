@@ -1,5 +1,5 @@
 """
-Задача 4: Отфильтровать пользователей-«двоечников»
+Задача 4: Отфильтровать пользователей-«двоечников» и написать тесты
 """
 user_marks = {
     'user1': [3, 1, 2],
@@ -46,11 +46,18 @@ def is_failing(marks):
 
     return get_average_value(marks) < 3
 
+def get_failing_users(user_marks):
+    failing_users = {}
+    print("Пользователи-«двоечники» (средний балл < 3):")
+    for user, marks in user_marks.items():
+        if is_failing(marks):
+            failing_users[user] = marks
+            avg = get_average_value(marks)
+            print(f"  {user}: {marks}, средний балл: {avg:.2f}")
+    return failing_users
 
-failing_users = {}
-print("Пользователи-«двоечники» (средний балл < 3):")
-for user, marks in user_marks.items():
-    if is_failing(marks):
-        failing_users[user] = marks
-        avg = get_average_value(marks)
-        print(f"  {user}: {marks}, средний балл: {avg:.2f}")
+result = get_failing_users(user_marks)
+print(result)
+
+expected = {'user1': [3, 1, 2], 'user4': [2, 1, 2], 'user5': [3, 2, 2]}
+assert expected == result

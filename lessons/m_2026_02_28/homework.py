@@ -44,3 +44,37 @@ from fastapi import FastAPI
 app = FastAPI()
 
 # Пишите код здесь
+
+
+@app.get("/hello/{name}")
+async def hello(name: str, age: int = None):
+    return {"message": f"Привет, {name}!", "age": age}
+
+
+# http://127.0.0.1:8000/hello/Bob
+
+
+
+
+
+@app.get("/check_number/{number}")
+async def check_number(number: int):
+    if number % 2 == 0:
+        return {"number": number, "is_even": True}
+    else:    
+        return {"number": number, "is_even": False}
+
+# http://127.0.0.1:8000/check_number/24
+
+# http://127.0.0.1:8000/check_number/19
+
+
+@app.get("/sum/")
+async def sum_numbers(a: int, b: int):
+    return {"a": a, "b": b, "sum": sum([a, b])}
+
+
+# @app.get("/sum/")
+# async def sum(a: int, b: int):
+#     sum_number = a + b
+#     return {"a": a, "b": b, "sum": sum_number}

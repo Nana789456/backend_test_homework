@@ -1,7 +1,6 @@
 """
 Задача 2: Найти студента с самой длинной фамилией
 """
-students = ['Иванов', 'Петренко', 'Сидорова123', 'Абрамян', 'Ван']
 
 
 # longest_surname = max(students, key=len) # сравниваем длину строк
@@ -16,5 +15,5 @@ def get_longest_surname(surnames):
             max_surname_len = len(surname)
     return longest_surname
 
-result = get_longest_surname(students)
+result = get_longest_surname(surnames)
 print(result)
