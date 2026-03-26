@@ -1,2 +1,2 @@
 # Команда для запуска сервера(сервиса), который будет обрабатывать входящие запросы
-uvicorn lessons.m_2026_02_28.homework:app --reload  
+uvicorn lessons.m_2026_03_19.homework:app --reload  

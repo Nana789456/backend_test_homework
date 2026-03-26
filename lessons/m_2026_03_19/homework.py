@@ -14,6 +14,7 @@ uvicorn lessons.m_2026_03_19.homework:app --reload
 from fastapi import FastAPI, Form, File, UploadFile, status
 from pydantic import BaseModel
 from typing import Optional, List
+from fastapi import Request
 
 
 app = FastAPI(title="Моё первое API")
@@ -69,3 +70,19 @@ async def get_item_by_id(id: int):
         return "По такому индексу элемента нет"
 
     return item
+
+
+class Category(BaseModel): # данный класс описывает тело нашего запроса, какие поля и каких типов мы ожидаем в запросе
+    name: str
+    slug: str
+    description: str = None
+    tags: List[str] = []
+
+
+@app.post("/api/v1/categories/", status_code = status.HTTP_201_CREATED)
+async def create_item_json(request: Request, age: int, item: Category):
+    print(request.headers)
+    return {
+            "received": item.model_dump(),
+            "message": f"Создана категория {item.name} со слагом {item.slug} с возрастом {age}"
+        }
