@@ -1,3 +1,16 @@
+"""
+#дз
+- Повторить проейденный материал
+- Изучить материал из lessons/m_2026_03_14/main.py
+- Переносите код в этот файл и запускайте через 
+uvicorn lessons.m_2026_03_19.homework:app --reload
+- Проверить работу запросов через Postman
+- Изучить что такое моки
+- Изучить мокирование запросов
+- Написать тесты для проверке написанного API с использованием моков
+- Подготовить вопросы
+"""
+
 from fastapi import FastAPI, Form, File, UploadFile, status
 from pydantic import BaseModel
 from typing import Optional, List
@@ -56,4 +69,3 @@ async def get_item_by_id(id: int):
         return "По такому индексу элемента нет"
 
     return item
-
