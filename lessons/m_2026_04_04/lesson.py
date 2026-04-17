@@ -47,6 +47,8 @@ def test_problem_direct_import_without_module():
 
 # ============= ЧАСТЬ 2: ПРАВИЛЬНЫЕ СПОСОБЫ МОКИРОВАНИЯ =============
 
+import homework
+
 def test_correct_import_module_approach():
     """✅ ПРАВИЛЬНО: импорт модуля целиком и обращение через модуль"""
     with patch('homework.aggregate_data') as mock_agg:

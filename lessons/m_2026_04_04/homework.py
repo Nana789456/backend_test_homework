@@ -77,7 +77,16 @@ def generate_report(user_id: int, days: int):
 
 
 def hello():
+    time.sleep(3) # аналогия тяжёлой операции
     return "real"
+
+def inner_fun():
+    time.sleep(3)
+    return "real_result_inner_fun"
+
+def hello_with_long_inner_fun():
+    result = inner_fun(3) # аналогия тяжёлой операции
+    return "real_result_hello_fun", result
 
 
 if __name__ == "__main__":
